@@ -5,6 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 using Org.BouncyCastle.Math;
 using System.Text;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Asn1.Cms;
 //using System.Numerics;
 
 namespace Project_NT101
@@ -736,7 +737,7 @@ namespace Project_NT101
                     else
                     {
                         label_e.ForeColor = Color.LightGreen;
-                        label_e.Text = "e is valid and prime";
+                        label_e.Text = "e is valid";
                         state_e = true;
                     }
                 }
@@ -787,7 +788,72 @@ namespace Project_NT101
         {
             richTextBox_starting.Text = "";
             richTextBox_key.Text = "";
-            richTextBox_result.Text = "";   
+            richTextBox_result.Text = "";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "PLAYFAIR CIPHER\r\n\r\n" +
+
+                "1. KEY MATRIX\r\n" +
+                "- Enter a keyword, convert to UPPERCASE, remove duplicates.\r\n" +
+                "- Fill the keyword first, then remaining characters.\r\n" +
+                "- If the length is odd, append 'X' at the end.\r\n" +
+                "- Matrix 5×5: replace J with I.\r\n" +
+                "- Matrix 6×6: use A–Z and 0–9.\r\n\r\n" +
+
+                "2. ENCRYPTION\r\n" +
+                "- Keep valid characters and convert to UPPERCASE.\r\n" +
+                "- Split into pairs; add X if odd length.\r\n" +
+                "- Same row: shift right.\r\n" +
+                "- Same column: shift down.\r\n" +
+                "- Different row/column: swap columns.\r\n\r\n" +
+
+                "3. DECRYPTION\r\n" +
+                "- Same row: shift left.\r\n" +
+                "- Same column: shift up.\r\n" +
+                "- Different row/column: swap columns.",
+                "Playfair Cipher",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
+        }
+
+        private void label_q_rsa_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "RSA ALGORITHM\r\n\r\n" +
+
+                "1. KEY GENERATION\r\n" +
+                "- Choose two prime numbers p and q.\r\n" +
+                "- Compute n = p × q and φ(n) = (p − 1)(q − 1).\r\n" +
+                "- Choose public exponent e, 1 < e < φ(n) (commonly 65537).\r\n" +
+                "- Compute private exponent d such that d x e ≡ 1 (mod φ(n)).\r\n" +
+                "- Public key: (e, n) | Private key: (d, n).\r\n\r\n" +
+
+                "2. ENCRYPTION\r\n" +
+                "- Encrypt message m: c = m^e mod n.\r\n\r\n" +
+
+                "3. DECRYPTION\r\n" +
+                "- Decrypt ciphertext c: m = c^d mod n.\r\n" +
+                "- Convert m back to the original message.\r\n",
+                "RSA Algorithm",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+
+
+        }
+
+        private void richTextBox_starting_TextChanged(object sender, EventArgs e)
+        {
+            if (richTextBox_starting.Text != string.Empty)
+            {
+                richTextBox_starting.Text = richTextBox_starting.Text.ToUpper();
+                richTextBox_starting.SelectionStart = richTextBox_starting.Text.Length;
+            }
         }
     }
 }

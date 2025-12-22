@@ -50,7 +50,7 @@
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             label2 = new Label();
-            label1 = new Label();
+            label_q_pf = new Label();
             richTextBox_starting = new RichTextBox();
             tab_rsa = new TabPage();
             label_e = new Label();
@@ -65,7 +65,7 @@
             button_enrsa = new Button();
             richTextBox_outrsa = new RichTextBox();
             richTextBox_inrsa = new RichTextBox();
-            label8 = new Label();
+            label_q_rsa = new Label();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -127,11 +127,11 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 20F);
-            label16.Location = new Point(247, 382);
+            label16.Location = new Point(245, 380);
             label16.Name = "label16";
-            label16.Size = new Size(351, 46);
+            label16.Size = new Size(369, 46);
             label16.TabIndex = 5;
-            label16.Text = "NHÓM    - NT101.Q11";
+            label16.Text = "NHÓM 11 - NT101.Q11";
             // 
             // label15
             // 
@@ -196,7 +196,7 @@
             tab_playfair.Controls.Add(radioButton2);
             tab_playfair.Controls.Add(radioButton1);
             tab_playfair.Controls.Add(label2);
-            tab_playfair.Controls.Add(label1);
+            tab_playfair.Controls.Add(label_q_pf);
             tab_playfair.Controls.Add(richTextBox_starting);
             tab_playfair.Font = new Font("Segoe UI", 12F);
             tab_playfair.Location = new Point(4, 29);
@@ -324,15 +324,17 @@
             label2.TabIndex = 2;
             label2.Text = "Starting text";
             // 
-            // label1
+            // label_q_pf
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(863, 4);
-            label1.Name = "label1";
-            label1.Size = new Size(21, 28);
-            label1.TabIndex = 1;
-            label1.Text = "?";
+            label_q_pf.AutoSize = true;
+            label_q_pf.BackColor = Color.DarkGray;
+            label_q_pf.Font = new Font("Segoe UI", 12F);
+            label_q_pf.Location = new Point(863, 3);
+            label_q_pf.Name = "label_q_pf";
+            label_q_pf.Size = new Size(21, 28);
+            label_q_pf.TabIndex = 1;
+            label_q_pf.Text = "?";
+            label_q_pf.Click += label1_Click;
             // 
             // richTextBox_starting
             // 
@@ -343,6 +345,7 @@
             richTextBox_starting.Size = new Size(873, 144);
             richTextBox_starting.TabIndex = 0;
             richTextBox_starting.Text = "";
+            richTextBox_starting.TextChanged += richTextBox_starting_TextChanged;
             // 
             // tab_rsa
             // 
@@ -358,7 +361,7 @@
             tab_rsa.Controls.Add(button_enrsa);
             tab_rsa.Controls.Add(richTextBox_outrsa);
             tab_rsa.Controls.Add(richTextBox_inrsa);
-            tab_rsa.Controls.Add(label8);
+            tab_rsa.Controls.Add(label_q_rsa);
             tab_rsa.Controls.Add(label7);
             tab_rsa.Controls.Add(label6);
             tab_rsa.Controls.Add(label5);
@@ -490,15 +493,17 @@
             richTextBox_inrsa.TabIndex = 10;
             richTextBox_inrsa.Text = "";
             // 
-            // label8
+            // label_q_rsa
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(863, 5);
-            label8.Name = "label8";
-            label8.Size = new Size(21, 28);
-            label8.TabIndex = 9;
-            label8.Text = "?";
+            label_q_rsa.AutoSize = true;
+            label_q_rsa.BackColor = Color.DarkGray;
+            label_q_rsa.Font = new Font("Segoe UI", 12F);
+            label_q_rsa.Location = new Point(863, 3);
+            label_q_rsa.Name = "label_q_rsa";
+            label_q_rsa.Size = new Size(21, 28);
+            label_q_rsa.TabIndex = 9;
+            label_q_rsa.Text = "?";
+            label_q_rsa.Click += label_q_rsa_Click;
             // 
             // label7
             // 
@@ -620,7 +625,7 @@
         private TabPage tab_playfair;
         private TabPage tab_rsa;
         private Label label2;
-        private Label label1;
+        private Label label_q_pf;
         private RichTextBox richTextBox_starting;
         private RichTextBox richTextBox_key;
         private Button button_decrypt;
@@ -631,7 +636,7 @@
         private RichTextBox richTextBox_result;
         private Label label4;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Label label8;
+        private Label label_q_rsa;
         private Label label7;
         private Label label6;
         private Label label5;

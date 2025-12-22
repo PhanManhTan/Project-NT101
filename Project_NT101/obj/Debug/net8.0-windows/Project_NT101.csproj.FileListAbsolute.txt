@@ -18,3 +18,4 @@ D:\References\3\HK5\NT101\Project_NT101\Project_NT101\Project_NT101\bin\Debug\ne
 D:\References\3\HK5\NT101\Project_NT101\Project_NT101\Project_NT101\obj\Debug\net8.0-windows\Project_NT101.csproj.AssemblyReference.cache
 D:\References\3\HK5\NT101\Project_NT101\Project_NT101\Project_NT101\obj\Debug\net8.0-windows\Project_.358A1F87.Up2Date
 D:\References\3\HK5\NT101\Project_NT101\Project_NT101\Project_NT101\obj\Debug\net8.0-windows\Project_NT101.Properties.Resources.resources
+D:\References\3\HK5\NT101\Project_NT101\Project_NT101\Project_NT101\obj\Debug\net8.0-windows\Project_NT101.sourcelink.json
