@@ -405,23 +405,12 @@ namespace Project_NT101
 
             while (true)
             {
-                // DÙNG RandomNumberGenerator THAY CHO RNGCryptoServiceProvider
                 RandomNumberGenerator.Fill(bytes);
-
-                // Đặt bit cao nhất = 1 để đảm bảo đúng độ dài bit
                 bytes[byteLength - 1] |= 0x80;
-
-                // Đặt bit thấp nhất = 1 để số lẻ (tăng xác suất là prime)
                 bytes[0] |= 0x01;
-
-                // Quan trọng: Dùng +1 để BigInteger BouncyCastle luôn dương
                 BigInteger candidate = new BigInteger(+1, bytes);
-
-                // Kiểm tra độ dài bit chính xác (tránh trường hợp hiếm bit cao bị 0)
                 if (candidate.BitLength != bitLength)
                     continue;
-
-                // BouncyCastle có sẵn IsProbablePrime
                 if (candidate.IsProbablePrime(30))  // 30 là đủ an toàn cho demo
                     return candidate;
             }
@@ -446,7 +435,6 @@ namespace Project_NT101
             BigInteger p_val = genPrime(32);
             richTextBox_q.Text = q_val.ToString();
             richTextBox_p.Text = p_val.ToString();
-
         }
 
         private void button_random_e_Click(object sender, EventArgs e)
@@ -468,11 +456,10 @@ namespace Project_NT101
             }
             else
             {
-                // Chỉ fallback khi 65537 không dùng được (rất hiếm)
                 BigInteger e_random;
                 do
                 {
-                    e_random = genPrime(16); // e nhỏ là đủ
+                    e_random = genPrime(16);
                 } while (e_random.CompareTo(phi) >= 0 || !e_random.Gcd(phi).Equals(BigInteger.One));
 
                 richTextBox_e.Text = e_random.ToString();
@@ -514,7 +501,7 @@ namespace Project_NT101
 
                     cipherBlocks.Add(c.ToString(10)); // Chuyển sang base 10 (số thập phân)
                 }
-                string separator = " # "; // Giống ảnh bạn gửi
+                string separator = " # "; 
                 richTextBox_outrsa.Text = string.Join(separator, cipherBlocks);
             }
             catch (Exception ex)
@@ -549,7 +536,7 @@ namespace Project_NT101
                 BigInteger e_val = new BigInteger(richTextBox_e.Text);
                 BigInteger d_val = e_val.ModInverse(phi_val);
 
-                string[] separators = { " # ", " ", "#" };
+                string[] separators = {" # "};
                 string[] cipherBlocks = cipherInput.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
                 List<byte> plainBytesList = new List<byte>();
@@ -726,13 +713,6 @@ namespace Project_NT101
                         state_e = false;
 
                         return;
-                    }
-
-                    if (!eVal.IsProbablePrime(100))
-                    {
-                        label_e.ForeColor = Color.Red;
-                        label_e.Text = "Valid e but not prime";
-                        state_e = false;
                     }
                     else
                     {
